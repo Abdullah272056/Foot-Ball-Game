@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'app/stats/top_assists_player_list_page/top_assists_player_list_page_view.dart';
 import 'app/stats/top_goal_scrorer_player_list_page/top_goal_scrorer_player_list_page_view.dart';
 
 
@@ -37,7 +38,7 @@ class MyMehendiDesignApp extends StatelessWidget {
 
 
           home:
-          TopGoalScrorerPlayerListPageView(),
+          TopAssistsPlayerListPageView(),
 
         );
       },
