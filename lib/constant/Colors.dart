@@ -9,7 +9,7 @@ const Color bijoyTechJobColor = Color(0xFF2F64A3);
 const Color textColor= Color(0xFF111111);
 const Color boldTextColor= Color(0xFF111111);
 const Color smallTextColor= Color(0xFF262626);
-const Color bgColor = Color(0xFFEAEAEA);
+const Color bgColor = Color(0xFFFDEFEF);
 const Color bgColor1 = Color(0xFFF8F8F8);
 const Color buttonBgColor = Color(0xFF2F64A3);
 
