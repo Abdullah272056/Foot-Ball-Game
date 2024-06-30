@@ -9,8 +9,8 @@ import '../../../utils/assets.dart';
 import '../controller/all_player_list_page_controller.dart';
 
 
-class AppPlayerListScreenPage extends StatelessWidget {
-   final pageController = Get.put(AppPlayerListPageController());
+class AllPlayerListScreenPage extends StatelessWidget {
+   final pageController = Get.put(AllPlayerListPageController());
    late BuildContext mContext;
    final GlobalKey<ScaffoldState>  drawerKey = GlobalKey();
 

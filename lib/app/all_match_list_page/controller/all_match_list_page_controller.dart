@@ -2,7 +2,7 @@
 import 'package:get/get.dart';
 
 
-class  AllPlayerListPageController extends GetxController {
+class  AllMatchListPageController extends GetxController {
 
 
 

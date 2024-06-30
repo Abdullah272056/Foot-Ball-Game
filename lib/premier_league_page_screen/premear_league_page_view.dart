@@ -329,10 +329,6 @@ class PremierLeaguePageView extends StatelessWidget {
 
    }
 
-
-
-
-
    ///TODO: list view item
 
    Widget categoryListItemSchedule( ){

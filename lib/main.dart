@@ -6,6 +6,7 @@ import 'package:foot_ball/splash_screen/splash_screen.dart';
 import 'package:foot_ball/today_games_details_page_screen/today_game_details_page_view.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'app/all_match_list_page/view/all_match_list_page.dart';
 import 'app/all_player_list_page/view/all_player_list_page.dart';
 import 'app/stats/top_assists_player_list_page/top_assists_player_list_page_view.dart';
 import 'app/stats/top_goal_scrorer_player_list_page/top_goal_scrorer_player_list_page_view.dart';
@@ -45,7 +46,11 @@ class MyMehendiDesignApp extends StatelessWidget {
 
 
           home:
-          AppPlayerListScreenPage(),
+          AllMatchListScreenPage(),
+          // NewsPageView(),
+          // CalenderPageView(),
+          // PremierLeaguePageView(),
+          // AppPlayerListScreenPage(),
 
         );
       },
