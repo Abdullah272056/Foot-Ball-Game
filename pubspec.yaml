@@ -45,6 +45,12 @@ dependencies:
   flutter_screenutil: ^5.9.0
   flag: ^7.0.0
 
+
+  firebase_core: ^2.9.0
+  firebase_messaging: ^14.4.0
+  flutter_local_notifications: ^15.1.0+1
+  app_settings: 4.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

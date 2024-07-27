@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "173493849282",
+    "project_id": "football-f455b",
+    "storage_bucket": "football-f455b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173493849282:android:8bb9514ca05dcd55bd3f5b",
+        "android_client_info": {
+          "package_name": "com.a4bsoft.copa_america"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsdqVemzqzufdOL4QFEVvGERWbOr3H7wY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
