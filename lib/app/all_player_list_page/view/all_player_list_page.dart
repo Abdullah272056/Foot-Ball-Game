@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../../../../constant/Colors.dart';
 import '../../../utils/assets.dart';
 import '../controller/all_player_list_page_controller.dart';
+import '../model/all_player_list_model.dart';
 
 
 class AllPlayerListScreenPage extends StatelessWidget {
@@ -127,20 +128,26 @@ class AllPlayerListScreenPage extends StatelessWidget {
         children: [
 
 
-          Expanded(child: GridView.builder(
-            padding: EdgeInsets.only(left: 10.w,right: 10.w),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10.0.h,
-              mainAxisSpacing: 10.0.w,
-              mainAxisExtent: 260.h,
+          Expanded(child:
+          Obx(()=>
+            GridView.builder(
+      padding: EdgeInsets.only(left: 10.w,right: 10.w),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10.0.h,
+        mainAxisSpacing: 10.0.w,
+        mainAxisExtent: 220.h,
 
-            ),
-            itemCount: 30, // Number of items in the grid
-            itemBuilder: (context, index) {
-              return playerListItem();
-            },
-          ))
+      ),
+      itemCount: pageController.playerList.length, // Number of items in the grid
+      itemBuilder: (context, index) {
+        return playerListItem(itemResponse: pageController.playerList[index]);
+      },
+    )
+          )
+
+
+          )
 
 
 
@@ -149,125 +156,142 @@ class AllPlayerListScreenPage extends StatelessWidget {
   }
 
    ///  list item design
-   Widget playerListItem () {
-     return Container(
+   Widget playerListItem ({required AllPlayerListModel itemResponse}) {
+     return InkWell(
+       onTap: (){
+
+         pageController.myUrlLaunch(url: itemResponse.playerProfileUrl);
+         // pageController.myUrlLaunch(url: "https://flutter.dev/");
+
+       },
+       child: Container(
 
 
-       decoration: BoxDecoration(
-         borderRadius: BorderRadius.circular(10.r),
-         border:Border.all(
-             width: 1.w,
-             color: Colors.black38
-         ) ,
-         // color:shimmerBackgroundBaseColor,
-         color: Colors.white,
-         boxShadow: [
-           BoxShadow(
-             color: Colors.grey.withOpacity(0.3),
-             spreadRadius: 1,
-             blurRadius: 1,
-             offset: Offset(0, 2),
-           ),
-         ],
-       ),
-       // padding: EdgeInsets.all(10),
-       // margin: EdgeInsets.symmetric(vertical: 5),
-       child: ClipRRect(
-         borderRadius: BorderRadius.circular(10.r),
-         child: Column(
-           children: [
-
-             Row(
-               children: [
-                 Expanded(child: Container(
-                   decoration: BoxDecoration(
-                       color: Colors.grey
-                   ),
-                   height: 150.h,
-                   child: FadeInImage.assetNetwork(
-                     fit: BoxFit.fitWidth,
-                     placeholder: Assets.profileAvater,
-                     image:"https://img.uefa.com/imgml/TP/players/3/2024/cutoff/63706.png",
-                     imageErrorBuilder: (context, url, error) =>
-                         Image.asset(
-                           Assets.profileAvater,
-                           fit: BoxFit.fill,
-                         ),
-                   ),
-                 ))
-               ],
+         decoration: BoxDecoration(
+           borderRadius: BorderRadius.circular(10.r),
+           border:Border.all(
+               width: 1.w,
+               color: Colors.black38
+           ) ,
+           // color:shimmerBackgroundBaseColor,
+           color: Colors.white,
+           boxShadow: [
+             BoxShadow(
+               color: Colors.grey.withOpacity(0.3),
+               spreadRadius: 1,
+               blurRadius: 1,
+               offset: Offset(0, 2),
              ),
+           ],
+         ),
+         // padding: EdgeInsets.all(10),
+         // margin: EdgeInsets.symmetric(vertical: 5),
+         child: ClipRRect(
+           borderRadius: BorderRadius.circular(10.r),
+           child: Column(
+             children: [
 
-             Expanded(child: Padding(
-               padding: EdgeInsets.only(left: 8.w,
-                   right: 8.w,bottom: 8.h,
-                 top: 7.h
-               ),
-               child: Column(
+               Row(
                  children: [
-                   Row(
-                     children: [
-                       Expanded(child: Text(
-                         "Cristiano Ronaldo",
-                         maxLines: 2,
-                         overflow: TextOverflow.ellipsis,
-                         textAlign: TextAlign.left,
-                         style:   TextStyle(
-                             color:Colors.black,
-                             fontSize: 15,
-                             fontWeight: FontWeight.bold),
-                       ))
-                     ],
-                   ),
-
-                   Row(
-                     children: [
-                       Expanded(child: Text(
-                         "Forward",
-                         maxLines: 1,
-                         overflow: TextOverflow.ellipsis,
-                         textAlign: TextAlign.left,
-                         style:   TextStyle(
-                             color:Colors.black54,
-                             fontSize: 15,
-                             fontWeight: FontWeight.normal),
-                       ))
-                     ],
-                   ),
-                   Expanded(child: Container()),
-
-                   Row(
-                     children: [
-                       ClipRRect(
-                         borderRadius: BorderRadius.circular(2.r),
-                         child: Flag.fromCode(
-                           FlagsCode.PT,
-                           height: 15.h,
-                           width: 20.w,
-                           fit: BoxFit.fill,
-                         ),
-                       ),
-                       SizedBox(width: 5.w,),
-                       Expanded(child: Text(
-                         "Portugal ",
-                         maxLines: 1,
-                         overflow: TextOverflow.ellipsis,
-                         textAlign: TextAlign.left,
-                         style:   TextStyle(
-                             color:Colors.black87,
-                             fontSize: 15,
-                             fontWeight: FontWeight.normal),
-                       ))
-                     ],
-                   ),
+                   Expanded(child: Container(
+                     decoration: BoxDecoration(
+                         color: Colors.grey
+                     ),
+                     height: 130.h,
+                     child: FadeInImage.assetNetwork(
+                       fit: BoxFit.fill,
+                       placeholder: Assets.profileAvater,
+                       image:itemResponse.playerImageUrl,
+                       imageErrorBuilder: (context, url, error) =>
+                           Image.asset(
+                             Assets.profileAvater,
+                             fit: BoxFit.fill,
+                           ),
+                     ),
+                   ))
                  ],
                ),
 
-             )),
+               Expanded(child: Padding(
+                 padding: EdgeInsets.only(left: 8.w,
+                     right: 8.w,bottom: 8.h,
+                   top: 7.h
+                 ),
+                 child: Column(
+                   children: [
+                     Row(
+                       children: [
+                         Expanded(child: Text(
+                           itemResponse.playerName,
+                           maxLines: 2,
+                           overflow: TextOverflow.ellipsis,
+                           textAlign: TextAlign.left,
+                           style:   TextStyle(
+                               color:Colors.black,
+                               fontSize: 15,
+                               fontWeight: FontWeight.bold),
+                         ))
+                       ],
+                     ),
+
+                     Row(
+                       children: [
+                         Expanded(child: Text(
+                           itemResponse.playerPlayedPosition,
+                           maxLines: 1,
+                           overflow: TextOverflow.ellipsis,
+                           textAlign: TextAlign.left,
+                           style:   TextStyle(
+                               color:Colors.black54,
+                               fontSize: 15,
+                               fontWeight: FontWeight.normal),
+                         ))
+                       ],
+                     ),
+                     Expanded(child: Container()),
+
+                     Row(
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(2.r),
+                           child:
+                           itemResponse.playerCountryCode!=""?
+
+                           Flag.fromString(
+                             itemResponse.playerCountryCode!=""?itemResponse.playerCountryCode:"ac" ,
+                             height: 15.h,
+                             width: 20.w,
+                             fit: BoxFit.fill,
+                           ):
+                           Image.asset(Assets.emptyImage,
+                             height: 15.h,
+                             width: 20.w,
+                           )
+
+                           ,
+                         ),
+                         SizedBox(width: 5.w,),
+                         Expanded(child: Text(
+                           itemResponse.playerCountryName,
+                           maxLines: 1,
+                           overflow: TextOverflow.ellipsis,
+                           textAlign: TextAlign.left,
+                           style:   TextStyle(
+                               color:Colors.black87,
+                               fontSize: 15,
+                               fontWeight: FontWeight.normal),
+                         ))
+                       ],
+                     ),
+                   ],
+                 ),
+
+               )),
 
 
 
-           ],
+             ],
+           ),
          ),
        ),
      );

@@ -29,6 +29,7 @@ class Assets{
   static const String tomato = "assets/images/tomato.png";
 
   static const String profileAvater = 'assets/images/profile_avater.jpg';
+  static const String emptyImage = 'assets/images/empty_image.jpg';
   static const String messageBgImage = 'assets/images/message_bg_image.png';
 
   static const String seed = "assets/images/tomato.png";
